@@ -23,9 +23,15 @@ function handleSubmit(event) {
 function renderListElement(data) {
     model.push(data);
     const li = document.createElement('li');
-    li.textContent = data;
+    li.appendChild('p');``
     li.appendChild(renderButtonList());
     return li;
+}
+
+function renderPElement(text) {
+    const p = document.createElement('p');
+    p.textContent = text;
+    return p;
 }
 
 function renderButtonList() {
@@ -48,8 +54,8 @@ function renderButton(type, event) {
 }
 
 function handleStar(event) {
-    console.log('starred');
-
+    const li = event.target.parentElement.parentElement;
+    li.classList.toggle('starred');
 }
 
 function handleDown(event) {
@@ -63,9 +69,11 @@ function handleUp(event) {
 }
 
 function handleDelete(event) {
-    debugger;
-    console.log('delete');
     const li = event.target.parentElement.parentElement;
     const parent = li.parentElement;
     parent.removeChild(li);
+    
+    model = model.filter(function(element) {
+
+    }
 }
