@@ -63,8 +63,9 @@ function handleUp(event) {
 }
 
 function handleDelete(event) {
+    debugger;
     console.log('delete');
-    const li = event.target.parent;
-    const parent = li.parent;
+    const li = event.target.parentElement.parentElement;
+    const parent = li.parentElement;
     parent.removeChild(li);
 }
