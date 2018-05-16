@@ -55,5 +55,7 @@ function handleUp(event) {
 
 function handleDelete(event) {
     console.log('delete');
-
+    const li = event.target.parent;
+    const parent = li.parent;
+    parent.removeChild(li);
 }
