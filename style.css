@@ -9,3 +9,26 @@ div#list ul li{
     background: black;
     display: inline-block;
 }
+
+.starred {
+    
+}
+
+.delete {
+    background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/delete-icon-transparent-background-12759.png");
+    background-color: red;
+    background-position: center;
+    background-size: cover;
+}
+
+.star {
+
+}
+
+.up {
+
+}
+
+.down {
+
+}
