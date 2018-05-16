@@ -38,22 +38,22 @@ function renderButton(type, event) {
     return div;
 }
 
-function handleStar() {
+function handleStar(event) {
     console.log('starred');
 
 }
 
-function handleDown() {
+function handleDown(event) {
     console.log('down');
 
 }
 
-function handleUp() {
+function handleUp(event) {
     console.log('up');
 
 }
 
-function handleDelete() {
+function handleDelete(event) {
     console.log('delete');
 
 }
