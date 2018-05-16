@@ -23,7 +23,7 @@ function handleSubmit(event) {
 function renderListElement(data) {
     model.push(data);
     const li = document.createElement('li');
-    li.appendChild('p');``
+    li.appendChild(renderPElement(data));``
     li.appendChild(renderButtonList());
     return li;
 }
@@ -70,10 +70,11 @@ function handleUp(event) {
 
 function handleDelete(event) {
     const li = event.target.parentElement.parentElement;
+    const p = li.children[0];
     const parent = li.parentElement;
     parent.removeChild(li);
     
     model = model.filter(function(element) {
-
-    }
+        return element !== p.textContent;
+    });
 }
