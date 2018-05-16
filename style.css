@@ -1,0 +1,11 @@
+div#list ul li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    width: 2rem;
+    height: 2rem;
+    background: black;
+    display: inline-block;
+}

@@ -24,10 +24,19 @@ function renderListElement(data) {
     model.push(data);
     const li = document.createElement('li');
     li.textContent = data;
-    Object.keys(buttonTypes).forEach(function(key) {
-        li.appendChild(renderButton(key, buttonTypes[key]));
-    });
+    li.appendChild(renderButtonList());
     return li;
+}
+
+function renderButtonList() {
+    const element = document.createElement('div');
+    element.classList.add('buttonList');
+
+    Object.keys(buttonTypes).forEach(function(key) {
+        element.appendChild(renderButton(key, buttonTypes[key]));
+    });
+
+    return element;
 }
 
 function renderButton(type, event) {
