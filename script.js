@@ -1,8 +1,8 @@
 let model = [];
 const buttonTypes = {
-    'star': handleStar,
-    'up': handleUp,
-    'down': handleDown,
+    // 'star': handleStar,
+    // 'up': handleUp,
+    // 'down': handleDown,
     'delete': handleDelete,
 };
 
