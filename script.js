@@ -1,12 +1,25 @@
 const app = {
-    init: function () {
-        const form = document.querySelector('form');
-        form.addEventListener('submit', handleSubmit);
+    init: function (selector) {
+        document
+            .querySelector(selector)
+            .addEventListener('submit', this.handleSubmit);
+    },
 
-    }
-}
+    handleSubmit: function (event) {
+        event.preventDefault();
 
-app.init();
+        const form = event.target;
+        const list = document.querySelector('ul');
+
+        list.appendChild(renderListElement(form.hike.value));
+
+        form.reset();
+    },
+
+
+};
+
+app.init('form');
 
 
 let model = [];
@@ -18,17 +31,6 @@ const buttonTypes = {
     'delete': handleDelete,
 };
 
-
-function handleSubmit(event) {
-    event.preventDefault();
-
-    const form = event.target;
-    const list = document.querySelector('ul');
-
-    list.appendChild(renderListElement(form.hike.value));
-
-    form.reset();
-}
 
 function renderListElement(data) {
     model.push(data);
