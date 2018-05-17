@@ -1,9 +1,10 @@
 const app = {
-    init: function (selector) {
+    init: function (selectors) {
         this.max = 0;
+        this.list = document.querySelector(selectors.listSelector);
 
         document
-            .querySelector(selector)
+            .querySelector(selectors.formSelector)
             .addEventListener('submit', event => {
                 event.preventDefault();
                 this.handleSubmit(event);
@@ -12,14 +13,13 @@ const app = {
 
     handleSubmit: function (event) {
         const form = event.target;
-        const list = document.querySelector('ul');
 
         const hike = {
             id: ++this.max,
             name: form.hike.value,
         };
 
-        list.appendChild(renderListElement(hike.name));
+        this.list.appendChild(renderListElement(hike.name));
         model.push(hike);
         
         form.reset();
@@ -28,7 +28,10 @@ const app = {
 
 };
 
-app.init('form');
+app.init({
+    formSelector: 'form#hikeForm', 
+    listSelector: 'ul#hikeList',
+});
 
 
 let model = [];
