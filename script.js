@@ -49,14 +49,6 @@ const buttonTypes = {
     'delete': handleDelete,
 };
 
-
-function renderListElement(data) {
-    const li = document.createElement('li');
-    li.appendChild(renderPElement(data)); ``
-    li.appendChild(renderButtonList());
-    return li;
-}
-
 function renderPElement(text) {
     const p = document.createElement('p');
     p.textContent = text;
