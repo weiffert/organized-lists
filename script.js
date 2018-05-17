@@ -67,11 +67,21 @@ const app = {
     },
 
     handleDown(event) {
+        try {
+            const li = event.target.parentElement.parentElement;
+            this.list.insertBefore(li, li.nextSibling.nextSibling);
+        } catch(error) {
 
+        }
     },
 
     handleUp(event) {
+        try {
+        const li = event.target.parentElement.parentElement;
+        this.list.insertBefore(li, li.previousSibling);
+        } catch(error) {
 
+        }
     },
 
     handleDelete(event) {
