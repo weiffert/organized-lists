@@ -41,6 +41,7 @@ const app = {
         const hike = {
             id: ++this.max,
             name: form.hike.value,
+            favorite: false,
         };
         this.list.insertBefore(
             this.renderListItem(hike),
@@ -52,33 +53,30 @@ const app = {
     },
 
     handleRename(event) {
-        console.log('rename');
+
     },
 
     handleStar(event) {
         console.log('star');
         const li = event.target.parentElement.parentElement;
         li.classList.toggle('starred');
+        
     },
 
     handleDown(event) {
-        console.log('down');
 
     },
 
     handleUp(event) {
-        console.log('up');
+
     },
 
     handleDelete(event) {
-        console.log('delete');
         const li = event.target.parentElement.parentElement;
-        const p = li.children[0];
         const parent = li.parentElement;
         parent.removeChild(li);
 
-        const index = app.hikes.indexOf(p.textContent);
-        app.hikes.splice(index, 1);
+        this.hikes = this.hikes.filter(hike => hike.id !== parseInt(li.dataset.id));
     },
 
 };
