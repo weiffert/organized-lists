@@ -53,7 +53,9 @@ const app = {
     },
 
     handleRename(event) {
-
+        const li = event.target.parentElement.parentElement;
+        const span = li.querySelector('span.hikeName');
+        span.contentEditable = span.contentEditable === 'false';
     },
 
     handleStar(event) {
