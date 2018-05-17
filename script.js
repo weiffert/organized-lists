@@ -1,5 +1,5 @@
 const app = {
-    init: function (selectors) {
+    init(selectors) {
         this.max = 0;
         this.list = document.querySelector(selectors.listSelector);
 
@@ -10,14 +10,15 @@ const app = {
                 this.handleSubmit(event);
             });
     },
-    renderListItem: function (data) {
+
+    renderListItem(data) {
         const li = document.createElement('li');
         li.appendChild(renderPElement(data.name)); 
         li.appendChild(renderButtonList());
         return li;
     },
 
-    handleSubmit: function (event) {
+    handleSubmit(event) {
         const form = event.target;
 
         const hike = {
