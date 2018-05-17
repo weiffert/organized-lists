@@ -23,8 +23,8 @@ span#hikeName {
     display: inline-block;
 } */
 
-.starred {
-    
+.favorite {
+    background-color: #ffae00;
 }
 
 .delete {

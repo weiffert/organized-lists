@@ -57,10 +57,13 @@ const app = {
     },
 
     handleStar(event) {
-        console.log('star');
         const li = event.target.parentElement.parentElement;
-        li.classList.toggle('starred');
+        li.classList.toggle('favorite');
         
+        this.hikes.forEach(hike => {
+            if(hike.id === parseInt(li.dataset.id))
+                hike.favorite = !hike.favorite;
+        });
     },
 
     handleDown(event) {
