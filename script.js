@@ -46,11 +46,11 @@ function renderButtonList() {
 }
 
 function renderButton(type, event) {
-    const div = document.createElement('div');
-    div.classList.add('button');
-    div.classList.add(type);
-    div.addEventListener('click', event);
-    return div;
+    const button = document.createElement('button');
+    button.classList.add('button');
+    button.classList.add(type);
+    button.addEventListener('click', event);
+    return button;
 }
 
 function handleStar(event) {
