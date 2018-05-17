@@ -73,8 +73,7 @@ function handleDelete(event) {
     const p = li.children[0];
     const parent = li.parentElement;
     parent.removeChild(li);
-    
-    model = model.filter(function(element) {
-        return element !== p.textContent;
-    });
+
+    const index = model.indexOf(p.textContent);
+    model.splice(index, 1);
 }
