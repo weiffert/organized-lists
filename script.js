@@ -5,59 +5,27 @@ const app = {
         this.list = document.querySelector(selectors.listSelector);
         this.template = document.querySelector(selectors.templateSelector);
 
-        this.myAddEventListener(selectors.formSelector, 'submit', this.handleSubmit);
-
-        // this.myAddEventListener('button.star', 'click', this.handleStar);
-        // this.myAddEventListener('button.rename', 'click', this.handleRename);
-        // this.myAddEventListener('button.up', 'click', this.handleUp);
-        // this.myAddEventListener('button.down', 'click', this.handleDown);
-        // this.myAddEventListener('button.delete', 'click', this.handleDelete);
-        
-        // document
-        //     .querySelector(selectors.formSelector)
-        //     .addEventListener('submit', event => {
-        //         event.preventDefault();
-        //         this.handleSubmit(event);
-        // //     });
-        // this.template
-        //     .querySelector('button.star')
-        //     .addEventListener('click', event => {
-        //         this.handleStar(event);
-        //     });
-        // this.template
-        //     .querySelector('button.rename')
-        //     .addEventListener('click', event => {
-        //         this.handleRename(event);
-        //     });
-        // this.template
-        //     .querySelector('button.up')
-        //     .addEventListener('click', event => {
-        //         this.handleUp(event);
-        //     });
-        // this.template
-        //     .querySelector('button.down')
-        //     .addEventListener('click', event => {
-        //         this.handleDown(event);
-        //     });
-        // this.template
-        //     .querySelector('button.delete')
-        //     .addEventListener('click', event => {
-        //         this.handleDelete(event);
-        //     });
+        this.myAddEventListener(document, selectors.formSelector, 'submit', 'handleSubmit');
     },
 
-    myAddEventListener(selector, type, callback) {
-        document
+    myAddEventListener(parent, selector, type, callback) {
+        parent
             .querySelector(selector)
             .addEventListener(type, e => {
-                debugger;
                 e.preventDefault();
-               callback(e);
+                this[callback](e);
             });
     },
 
     renderListItem(data) {
         const li = this.template.cloneNode(true);
+        
+        this.myAddEventListener(li, 'button.star', 'click', 'handleStar');
+        this.myAddEventListener(li, 'button.rename', 'click', 'handleRename');
+        this.myAddEventListener(li, 'button.up', 'click', 'handleUp');
+        this.myAddEventListener(li, 'button.down', 'click', 'handleDown');
+        this.myAddEventListener(li, 'button.delete', 'click', 'handleDelete');
+        
         li.classList.remove('template');
         li.dataset.id = data.id;
         li
@@ -74,7 +42,6 @@ const app = {
             id: ++this.max,
             name: form.hike.value,
         };
-        // debugger;
         this.list.insertBefore(
             this.renderListItem(hike),
             this.list.firstElementChild
@@ -86,30 +53,25 @@ const app = {
 
     handleRename(event) {
         console.log('rename');
-        debugger;
     },
 
     handleStar(event) {
         console.log('star');
-        debugger;
         const li = event.target.parentElement.parentElement;
         li.classList.toggle('starred');
     },
 
     handleDown(event) {
         console.log('down');
-        debugger;
 
     },
 
     handleUp(event) {
         console.log('up');
-        debugger;
     },
 
     handleDelete(event) {
         console.log('delete');
-        debugger;
         const li = event.target.parentElement.parentElement;
         const p = li.children[0];
         const parent = li.parentElement;
