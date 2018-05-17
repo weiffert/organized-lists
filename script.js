@@ -5,11 +5,54 @@ const app = {
         this.list = document.querySelector(selectors.listSelector);
         this.template = document.querySelector(selectors.templateSelector);
 
+        this.myAddEventListener(selectors.formSelector, 'submit', this.handleSubmit);
+
+        // this.myAddEventListener('button.star', 'click', this.handleStar);
+        // this.myAddEventListener('button.rename', 'click', this.handleRename);
+        // this.myAddEventListener('button.up', 'click', this.handleUp);
+        // this.myAddEventListener('button.down', 'click', this.handleDown);
+        // this.myAddEventListener('button.delete', 'click', this.handleDelete);
+        
+        // document
+        //     .querySelector(selectors.formSelector)
+        //     .addEventListener('submit', event => {
+        //         event.preventDefault();
+        //         this.handleSubmit(event);
+        // //     });
+        // this.template
+        //     .querySelector('button.star')
+        //     .addEventListener('click', event => {
+        //         this.handleStar(event);
+        //     });
+        // this.template
+        //     .querySelector('button.rename')
+        //     .addEventListener('click', event => {
+        //         this.handleRename(event);
+        //     });
+        // this.template
+        //     .querySelector('button.up')
+        //     .addEventListener('click', event => {
+        //         this.handleUp(event);
+        //     });
+        // this.template
+        //     .querySelector('button.down')
+        //     .addEventListener('click', event => {
+        //         this.handleDown(event);
+        //     });
+        // this.template
+        //     .querySelector('button.delete')
+        //     .addEventListener('click', event => {
+        //         this.handleDelete(event);
+        //     });
+    },
+
+    myAddEventListener(selector, type, callback) {
         document
-            .querySelector(selectors.formSelector)
-            .addEventListener('submit', event => {
-                event.preventDefault();
-                this.handleSubmit(event);
+            .querySelector(selector)
+            .addEventListener(type, e => {
+                debugger;
+                e.preventDefault();
+               callback(e);
             });
     },
 
@@ -31,7 +74,7 @@ const app = {
             id: ++this.max,
             name: form.hike.value,
         };
-
+        // debugger;
         this.list.insertBefore(
             this.renderListItem(hike),
             this.list.firstElementChild
@@ -41,6 +84,40 @@ const app = {
         form.reset();
     },
 
+    handleRename(event) {
+        console.log('rename');
+        debugger;
+    },
+
+    handleStar(event) {
+        console.log('star');
+        debugger;
+        const li = event.target.parentElement.parentElement;
+        li.classList.toggle('starred');
+    },
+
+    handleDown(event) {
+        console.log('down');
+        debugger;
+
+    },
+
+    handleUp(event) {
+        console.log('up');
+        debugger;
+    },
+
+    handleDelete(event) {
+        console.log('delete');
+        debugger;
+        const li = event.target.parentElement.parentElement;
+        const p = li.children[0];
+        const parent = li.parentElement;
+        parent.removeChild(li);
+
+        const index = app.hikes.indexOf(p.textContent);
+        app.hikes.splice(index, 1);
+    },
 
 };
 
@@ -50,60 +127,3 @@ app.init({
     templateSelector: 'li.hike.template',
 });
 
-
-const buttonTypes = {
-    // 'star': handleStar,
-    // 'up': handleUp,
-    // 'down': handleDown,
-    'delete': handleDelete,
-};
-
-function renderPElement(text) {
-    const p = document.createElement('p');
-    p.textContent = text;
-    return p;
-}
-
-function renderButtonList() {
-    const element = document.createElement('div');
-    element.classList.add('buttonList');
-
-    Object.keys(buttonTypes).forEach(function (key) {
-        element.appendChild(renderButton(key, buttonTypes[key]));
-    });
-
-    return element;
-}
-
-function renderButton(type, event) {
-    const button = document.createElement('button');
-    button.classList.add('button');
-    button.classList.add(type);
-    button.addEventListener('click', event);
-    return button;
-}
-
-function handleStar(event) {
-    const li = event.target.parentElement.parentElement;
-    li.classList.toggle('starred');
-}
-
-function handleDown(event) {
-    console.log('down');
-
-}
-
-function handleUp(event) {
-    console.log('up');
-
-}
-
-function handleDelete(event) {
-    const li = event.target.parentElement.parentElement;
-    const p = li.children[0];
-    const parent = li.parentElement;
-    parent.removeChild(li);
-
-    const index = app.hikes.indexOf(p.textContent);
-    app.hikes.splice(index, 1);
-}
