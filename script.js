@@ -1,18 +1,27 @@
 const app = {
     init: function (selector) {
+        this.max = 0;
+
         document
             .querySelector(selector)
-            .addEventListener('submit', this.handleSubmit);
+            .addEventListener('submit', event => {
+                event.preventDefault();
+                this.handleSubmit(event);
+            });
     },
 
     handleSubmit: function (event) {
-        event.preventDefault();
-
         const form = event.target;
         const list = document.querySelector('ul');
 
-        list.appendChild(renderListElement(form.hike.value));
+        const hike = {
+            id: ++this.max,
+            name: form.hike.value,
+        };
 
+        list.appendChild(renderListElement(hike.name));
+        model.push(hike);
+        
         form.reset();
     },
 
@@ -33,7 +42,6 @@ const buttonTypes = {
 
 
 function renderListElement(data) {
-    model.push(data);
     const li = document.createElement('li');
     li.appendChild(renderPElement(data)); ``
     li.appendChild(renderButtonList());
