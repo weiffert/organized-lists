@@ -8,6 +8,10 @@ div#list li{
     justify-content: space-between;
 }
 
+span#hikeName {
+    margin: 0 0.75rem;
+}
+
 /* .button {
     width: 2rem;
     height: 2rem;

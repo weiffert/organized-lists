@@ -28,7 +28,10 @@ const app = {
             name: form.hike.value,
         };
 
-        this.list.insertBefore(this.renderListItem(hike), this.list.firstElementChild);
+        this.list.insertBefore(
+            this.renderListItem(hike), 
+            this.list.firstElementChild
+        );
         this.hikes.unshift(hike);
 
         form.reset();

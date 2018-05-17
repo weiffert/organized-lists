@@ -35,7 +35,17 @@
 
             </div>
         </form>
-        <ul id="hikeList"></ul>
+        <ul id="hikeList" class="no-bullet">
+            <li class="hike grid-x align-middle invisible">
+                <span class="hikeName auto cell"></span>
+                <span class="actions shrink cell button-group">
+                    <button class="button warning">Star</button>
+                    <button class="button primary">Up</button>
+                    <button class="button primary">Down</button>
+                    <button class="button alert">Del</button>
+                </span>
+            </li>
+        </ul>
     </main>
     <script src="script.js"></script>
 </body>
