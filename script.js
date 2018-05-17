@@ -10,6 +10,12 @@ const app = {
                 this.handleSubmit(event);
             });
     },
+    renderListItem: function (data) {
+        const li = document.createElement('li');
+        li.appendChild(renderPElement(data.name)); 
+        li.appendChild(renderButtonList());
+        return li;
+    },
 
     handleSubmit: function (event) {
         const form = event.target;
@@ -19,9 +25,9 @@ const app = {
             name: form.hike.value,
         };
 
-        this.list.appendChild(renderListElement(hike.name));
+        this.list.appendChild(this.renderListItem(hike));
         model.push(hike);
-        
+
         form.reset();
     },
 
@@ -29,7 +35,7 @@ const app = {
 };
 
 app.init({
-    formSelector: 'form#hikeForm', 
+    formSelector: 'form#hikeForm',
     listSelector: 'ul#hikeList',
 });
 
