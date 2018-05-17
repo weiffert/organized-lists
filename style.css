@@ -3,7 +3,7 @@ main {
     margin: 1rem auto;
 }
 
-li:nth-of-type(even) {
+li:nth-of-type(odd) {
     background-color: #eee;
 }
 
@@ -23,7 +23,7 @@ li.favorite {
     background-color: #ffae00;
 }
 
-li:nth-of-type(even).favorite {
+li:nth-of-type(odd).favorite {
     background-color: #c68700;
 }
 
