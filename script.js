@@ -14,6 +14,7 @@ const app = {
 
     renderListItem(data) {
         const li = document.createElement('li');
+        li.dataset.id = data.id;
         li.appendChild(renderPElement(data.name));
         li.appendChild(renderButtonList());
         return li;
