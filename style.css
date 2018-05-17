@@ -8,7 +8,7 @@ div#list li{
     justify-content: space-between;
 }
 
-span#hikeName {
+span.hikeName {
     margin: 0 0.75rem;
 }
 
@@ -16,32 +16,31 @@ span#hikeName {
     display: none;
 }
 
-/* .button {
-    width: 2rem;
-    height: 2rem;
-    background: black;
-    display: inline-block;
-} */
-
 .favorite {
     background-color: #ffae00;
 }
 
-.delete {
-    background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/delete-icon-transparent-background-12759.png");
-    background-color: red;
+.button {
     background-position: center;
     background-size: cover;
 }
 
-.star {
+.delete {
+    background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/delete-icon-transparent-background-12759.png");
+}
 
+.star {
+    background-image: url("https://www.shareicon.net/data/512x512/2015/12/05/682966_star_512x512.png");
 }
 
 .up {
-
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Aiga_uparrow.svg/2000px-Aiga_uparrow.svg.png");
 }
 
 .down {
+    background-image: url("https://cdn.pixabay.com/photo/2012/04/11/17/17/down-29013_960_720.png");
+}
 
+.rename {
+    background-image: url("http://simpleicon.com/wp-content/uploads/pencil.svg");
 }

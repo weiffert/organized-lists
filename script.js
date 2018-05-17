@@ -56,6 +56,18 @@ const app = {
         const li = event.target.parentElement.parentElement;
         const span = li.querySelector('span.hikeName');
         span.contentEditable = span.contentEditable === 'false';
+
+        span.addEventListener('keyup', event => {
+            this.handleRenamedData(event);
+        });
+    },
+
+    handleRenamedData(event) {
+        const span = event.target;
+        const li = span.parentElement;
+
+        const index = this.hikes.findIndex(hike => hike.id === parseInt(li.dataset.id));
+        this.hikes[index].name = span.textContent;
     },
 
     handleStar(event) {
