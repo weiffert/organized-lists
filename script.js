@@ -28,8 +28,8 @@ const app = {
             name: form.hike.value,
         };
 
-        this.list.appendChild(this.renderListItem(hike));
-        this.hikes.push(hike);
+        this.list.insertBefore(this.renderListItem(hike), this.list.firstElementChild);
+        this.hikes.unshift(hike);
 
         form.reset();
     },
