@@ -3,6 +3,7 @@ const app = {
         this.max = 0;
         this.hikes = [];
         this.list = document.querySelector(selectors.listSelector);
+        this.template = document.querySelector(selectors.templateSelector);
 
         document
             .querySelector(selectors.formSelector)
@@ -13,10 +14,13 @@ const app = {
     },
 
     renderListItem(data) {
-        const li = document.createElement('li');
+        const li = this.template.cloneNode(true);
+        li.classList.remove('template');
         li.dataset.id = data.id;
-        li.appendChild(renderPElement(data.name));
-        li.appendChild(renderButtonList());
+        li
+            .querySelector('span.hikeName')
+            .textContent = data.name;
+
         return li;
     },
 
@@ -29,7 +33,7 @@ const app = {
         };
 
         this.list.insertBefore(
-            this.renderListItem(hike), 
+            this.renderListItem(hike),
             this.list.firstElementChild
         );
         this.hikes.unshift(hike);
@@ -43,6 +47,7 @@ const app = {
 app.init({
     formSelector: 'form#hikeForm',
     listSelector: 'ul#hikeList',
+    templateSelector: 'li.hike.template',
 });
 
 

@@ -12,6 +12,10 @@ span#hikeName {
     margin: 0 0.75rem;
 }
 
+.template {
+    display: none;
+}
+
 /* .button {
     width: 2rem;
     height: 2rem;
