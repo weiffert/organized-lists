@@ -15,7 +15,7 @@ function handleSubmit(event) {
     const form = event.target;
     const list = document.querySelector('ul');
 
-    list.appendChild(renderListElement(form.movie.value));
+    list.appendChild(renderListElement(form.hike.value));
 
     form.reset();
 }

@@ -3,12 +3,12 @@ div#list ul li{
     justify-content: space-between;
 }
 
-.button {
+/* .button {
     width: 2rem;
     height: 2rem;
     background: black;
     display: inline-block;
-}
+} */
 
 .starred {
     
