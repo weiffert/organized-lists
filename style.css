@@ -3,9 +3,12 @@ main {
     margin: 1rem auto;
 }
 
-div#list li{
-    display: flex;
-    justify-content: space-between;
+li:nth-of-type(even) {
+    background-color: #eee;
+}
+
+span.hikeName[contenteditable="true"] {
+    border: 0.25rem solid #aaa;
 }
 
 span.hikeName {
@@ -16,31 +19,42 @@ span.hikeName {
     display: none;
 }
 
-.favorite {
+li.favorite {
     background-color: #ffae00;
 }
 
-.button {
+li:nth-of-type(even).favorite {
+    background-color: #c68700;
+}
+
+.button-group {
+    margin: 0;c68700
+}
+
+.button-group .button {
+    width: 3rem;
+    height: 3rem;
     background-position: center;
     background-size: cover;
+    margin: 0;
 }
 
 .delete {
-    background-image: url("http://backgroundcheckall.com/wp-content/uploads/2017/12/delete-icon-transparent-background-12759.png");
+    background-image: url("delete.png");
 }
 
 .star {
-    background-image: url("https://www.shareicon.net/data/512x512/2015/12/05/682966_star_512x512.png");
+    background-image: url("star.png");
 }
 
 .up {
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Aiga_uparrow.svg/2000px-Aiga_uparrow.svg.png");
+    background-image: url("chevron-up.png");
 }
 
 .down {
-    background-image: url("https://cdn.pixabay.com/photo/2012/04/11/17/17/down-29013_960_720.png");
+    background-image: url("chevron-down.png");
 }
 
 .rename {
-    background-image: url("http://simpleicon.com/wp-content/uploads/pencil.svg");
+    background-image: url("pencil.png");
 }

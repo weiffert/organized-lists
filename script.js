@@ -56,6 +56,7 @@ const app = {
         const li = event.target.parentElement.parentElement;
         const span = li.querySelector('span.hikeName');
         span.contentEditable = span.contentEditable === 'false';
+        span.focus();
 
         span.addEventListener('keyup', event => {
             this.handleRenamedData(event);
