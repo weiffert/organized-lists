@@ -1,6 +1,7 @@
 const app = {
     init(selectors) {
         this.max = 0;
+        this.hikes = [];
         this.list = document.querySelector(selectors.listSelector);
 
         document
@@ -13,7 +14,7 @@ const app = {
 
     renderListItem(data) {
         const li = document.createElement('li');
-        li.appendChild(renderPElement(data.name)); 
+        li.appendChild(renderPElement(data.name));
         li.appendChild(renderButtonList());
         return li;
     },
@@ -27,7 +28,7 @@ const app = {
         };
 
         this.list.appendChild(this.renderListItem(hike));
-        model.push(hike);
+        this.hikes.push(hike);
 
         form.reset();
     },
@@ -40,8 +41,6 @@ app.init({
     listSelector: 'ul#hikeList',
 });
 
-
-let model = [];
 
 const buttonTypes = {
     // 'star': handleStar,
@@ -96,6 +95,6 @@ function handleDelete(event) {
     const parent = li.parentElement;
     parent.removeChild(li);
 
-    const index = model.indexOf(p.textContent);
-    model.splice(index, 1);
+    const index = app.hikes.indexOf(p.textContent);
+    app.hikes.splice(index, 1);
 }
