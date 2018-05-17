@@ -1,4 +1,16 @@
+const app = {
+    init: function () {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', handleSubmit);
+
+    }
+}
+
+app.init();
+
+
 let model = [];
+
 const buttonTypes = {
     // 'star': handleStar,
     // 'up': handleUp,
@@ -6,8 +18,6 @@ const buttonTypes = {
     'delete': handleDelete,
 };
 
-const form = document.querySelector('form');
-form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -23,7 +33,7 @@ function handleSubmit(event) {
 function renderListElement(data) {
     model.push(data);
     const li = document.createElement('li');
-    li.appendChild(renderPElement(data));``
+    li.appendChild(renderPElement(data)); ``
     li.appendChild(renderButtonList());
     return li;
 }
@@ -38,7 +48,7 @@ function renderButtonList() {
     const element = document.createElement('div');
     element.classList.add('buttonList');
 
-    Object.keys(buttonTypes).forEach(function(key) {
+    Object.keys(buttonTypes).forEach(function (key) {
         element.appendChild(renderButton(key, buttonTypes[key]));
     });
 
