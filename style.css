@@ -3,6 +3,20 @@ main {
     margin: 1rem auto;
 }
 
+header {
+    padding: 2rem;
+    background-image: url("2017-07-24-8954-PANO.jpg");
+    background-size: cover;
+    background-position: center;
+    border-bottom: 0.5rem solid #aaa;
+}
+
+h1 {
+    color: whitesmoke;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 5rem;
+}
+
 li:nth-of-type(odd) {
     background-color: #eee;
 }
