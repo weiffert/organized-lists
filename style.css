@@ -24,6 +24,11 @@ li:nth-of-type(odd) {
     background-color: #eee;
 }
 
+li.hike:first-child button.up, li.hike:nth-last-child(2) button.down {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
 span.hikeName[contenteditable="true"] {
     border: 0.25rem solid #aaa;
 }
