@@ -53,7 +53,7 @@ const app = {
     },
 
     handleRename(event) {
-        const li = event.target.parentElement.parentElement;
+        const li = event.target.closest('li');
         const span = li.querySelector('span.hikeName');
         span.contentEditable = span.contentEditable === 'false';
         span.focus();
@@ -72,7 +72,7 @@ const app = {
     },
 
     handleStar(event) {
-        const li = event.target.parentElement.parentElement;
+        const li = event.target.closest('li');
         li.classList.toggle('favorite');
 
         this.hikes.forEach(hike => {
@@ -82,7 +82,7 @@ const app = {
     },
 
     handleDown(event) {
-        const li = event.target.parentElement.parentElement;
+        const li = event.target.closest('li');
         const index = this.hikes.findIndex(hike => hike.id === parseInt(li.dataset.id));
 
         if (index < this.hikes.length - 1) {
@@ -94,7 +94,7 @@ const app = {
     },
 
     handleUp(event) {
-        const li = event.target.parentElement.parentElement;
+        const li = event.target.closest('li');
         const index = this.hikes.findIndex(hike => hike.id === parseInt(li.dataset.id));
 
         if (index > 0) {
@@ -106,7 +106,7 @@ const app = {
     },
 
     handleDelete(event) {
-        const li = event.target.parentElement.parentElement;
+        const li = event.target.closest('li');
         const parent = li.parentElement;
         parent.removeChild(li);
 
