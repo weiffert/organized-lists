@@ -57,6 +57,9 @@ class App {
         const span = li.querySelector('span.hikeName');
         span.contentEditable = !span.isContentEditable;
         event.target.classList.toggle('save');
+        event.target.classList.toggle('success');
+        event.target.classList.toggle('alert');
+
         span.focus();
 
         const index = this.hikes.findIndex(hike => hike.id === parseInt(li.dataset.id));
