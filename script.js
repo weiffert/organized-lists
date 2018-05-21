@@ -107,8 +107,7 @@ const app = {
 
     handleDelete(event) {
         const li = event.target.closest('li');
-        const parent = li.parentElement;
-        parent.removeChild(li);
+        li.remove();
 
         this.hikes = this.hikes.filter(hike => hike.id !== parseInt(li.dataset.id));
     },
