@@ -1,12 +1,12 @@
-const app = {
-    init(selectors) {
+class App {
+    constructor(selectors) {
         this.max = 0;
         this.hikes = [];
         this.list = document.querySelector(selectors.listSelector);
         this.template = document.querySelector(selectors.templateSelector);
 
         this.myAddEventListener(document, selectors.formSelector, 'submit', 'handleSubmit');
-    },
+    }
 
     myAddEventListener(parent, selector, type, callback) {
         parent
@@ -15,7 +15,7 @@ const app = {
                 e.preventDefault();
                 this[callback](e);
             });
-    },
+    }
 
     renderListItem(data) {
         const li = this.template.cloneNode(true);
@@ -33,7 +33,7 @@ const app = {
             .textContent = data.name;
 
         return li;
-    },
+    }
 
     handleSubmit(event) {
         const form = event.target;
@@ -50,7 +50,7 @@ const app = {
         this.hikes.unshift(hike);
 
         form.reset();
-    },
+    }
 
     handleRename(event) {
         const li = event.target.closest('li');
@@ -61,7 +61,7 @@ const app = {
         span.addEventListener('keyup', event => {
             this.handleRenamedData(event);
         });
-    },
+    }
 
     handleRenamedData(event) {
         const span = event.target;
@@ -69,7 +69,7 @@ const app = {
 
         const index = this.hikes.findIndex(hike => hike.id === parseInt(li.dataset.id));
         this.hikes[index].name = span.textContent;
-    },
+    }
 
     handleStar(event) {
         const li = event.target.closest('li');
@@ -79,7 +79,7 @@ const app = {
             if (hike.id === parseInt(li.dataset.id))
                 hike.favorite = !hike.favorite;
         });
-    },
+    }
 
     handleDown(event) {
         const li = event.target.closest('li');
@@ -91,7 +91,7 @@ const app = {
             const value = this.hikes.splice(index, 1);
             this.hikes.splice(index + 1, 0, value[0]);
         }
-    },
+    }
 
     handleUp(event) {
         const li = event.target.closest('li');
@@ -103,20 +103,19 @@ const app = {
             const value = this.hikes.splice(index, 1);
             this.hikes.splice(index - 1, 0, value[0]);
         }
-    },
+    }
 
     handleDelete(event) {
         const li = event.target.closest('li');
         li.remove();
 
         this.hikes = this.hikes.filter(hike => hike.id !== parseInt(li.dataset.id));
-    },
+    }
 
 };
 
-app.init({
+const app = new App({
     formSelector: 'form#hikeForm',
     listSelector: 'ul#hikeList',
     templateSelector: 'li.hike.template',
 });
-
