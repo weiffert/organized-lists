@@ -5,14 +5,15 @@ class App {
         this.list = document.querySelector(selectors.listSelector);
         this.template = document.querySelector(selectors.templateSelector);
 
-        this.myAddEventListener(document, selectors.formSelector, 'submit', 'handleSubmit');
+        this.myAddEventListener(document, selectors.formSelector, 'submit', 'handleSubmit', true);
     }
 
-    myAddEventListener(parent, selector, type, callback) {
+    myAddEventListener(parent, selector, type, callback, preventDefault) {
         parent
             .querySelector(selector)
             .addEventListener(type, e => {
-                e.preventDefault();
+                if(preventDefault)
+                    e.preventDefault();
                 this[callback](e);
             });
     }
@@ -25,6 +26,7 @@ class App {
         this.myAddEventListener(li, 'button.up', 'click', 'handleUp');
         this.myAddEventListener(li, 'button.down', 'click', 'handleDown');
         this.myAddEventListener(li, 'button.delete', 'click', 'handleDelete');
+        this.myAddEventListener(li, 'span.hikeName', 'keypress', 'handleEnter');
 
         li.classList.remove('template');
         li.dataset.id = data.id;
@@ -55,15 +57,23 @@ class App {
     handleRename(event) {
         const li = event.target.closest('li');
         const span = li.querySelector('span.hikeName');
-        span.contentEditable = !span.isContentEditable;
-        event.target.classList.toggle('save');
-        event.target.classList.toggle('success');
-        event.target.classList.toggle('alert');
+        const button = li.querySelector('.button.rename');
 
+        span.contentEditable = !span.isContentEditable;
         span.focus();
+
+        button.classList.toggle('save');
+        button.classList.toggle('success');
+        button.classList.toggle('alert');
+
 
         const index = this.hikes.findIndex(hike => hike.id === parseInt(li.dataset.id));
         this.hikes[index].name = span.textContent;
+    }
+
+    handleEnter(event) {
+        if(event.key === 'Enter')
+            this.handleRename(event);
     }
 
     handleStar(event) {
