@@ -85,3 +85,7 @@ li:nth-of-type(odd).favorite {
 .rename {
     background-image: url("pencil.png");
 }
+
+.rename.save {
+    background-image: url("content-save.png")
+}

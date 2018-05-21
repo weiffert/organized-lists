@@ -55,17 +55,9 @@ class App {
     handleRename(event) {
         const li = event.target.closest('li');
         const span = li.querySelector('span.hikeName');
-        span.contentEditable = span.contentEditable === 'false';
+        span.contentEditable = !span.isContentEditable;
+        event.target.classList.toggle('save');
         span.focus();
-
-        span.addEventListener('keyup', event => {
-            this.handleRenamedData(event);
-        });
-    }
-
-    handleRenamedData(event) {
-        const span = event.target;
-        const li = span.parentElement;
 
         const index = this.hikes.findIndex(hike => hike.id === parseInt(li.dataset.id));
         this.hikes[index].name = span.textContent;
